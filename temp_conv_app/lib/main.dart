@@ -29,7 +29,7 @@ class _TempConversionHomePageState extends State<TempConversionHomePage> {
   List<String> _history = [];
 
   void _convertTemperature() {
-    final double temperature = double.tryParse(_temperatureController.text);
+    final double? temperature = double.tryParse(_temperatureController.text);
     if (temperature == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Please enter a valid temperature')),
@@ -75,9 +75,9 @@ class _TempConversionHomePageState extends State<TempConversionHomePage> {
             SizedBox(height: 16),
             DropdownButton<String>(
               value: _conversionType,
-              onChanged: (String newValue) {
+              onChanged: (String? newValue) {
                 setState(() {
-                  _conversionType = newValue;
+                  _conversionType = newValue!;
                 });
               },
               items: [
