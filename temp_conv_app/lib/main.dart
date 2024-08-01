@@ -5,56 +5,67 @@ void main() {
 }
 
 class TempConversionApp extends StatelessWidget {
+  final ValueNotifier<ThemeMode> _notifier = ValueNotifier(ThemeMode.light);
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Temperature Conversion',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        brightness: Brightness.light,
-        scaffoldBackgroundColor: Color(0xFFD3D3D3),
-        appBarTheme: AppBarTheme(
-          color: Color(0xFFADD8E6),
-          iconTheme: IconThemeData(color: Color(0xFF000000)),
-          titleTextStyle: TextStyle(color: Color(0xFF000000), fontSize: 20),
-        ),
-        textTheme: TextTheme(
-          bodyLarge: TextStyle(color: Color(0xFF000000)),
-          bodyMedium: TextStyle(color: Color(0xFF000000)),
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFFADD8E6),
-            foregroundColor: Color(0xFF000000),
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: _notifier,
+      builder: (_, ThemeMode currentMode, __) {
+        return MaterialApp(
+          title: 'Temperature Conversion',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            brightness: Brightness.light,
+            scaffoldBackgroundColor: Color(0xFFD3D3D3),
+            appBarTheme: AppBarTheme(
+              color: Color(0xFFADD8E6),
+              iconTheme: IconThemeData(color: Color(0xFF000000)),
+              titleTextStyle: TextStyle(color: Color(0xFF000000), fontSize: 20),
+            ),
+            textTheme: TextTheme(
+              bodyLarge: TextStyle(color: Color(0xFF000000)),
+              bodyMedium: TextStyle(color: Color(0xFF000000)),
+            ),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFFADD8E6),
+                foregroundColor: Color(0xFF000000),
+              ),
+            ),
           ),
-        ),
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        scaffoldBackgroundColor: Color(0xFF000000),
-        appBarTheme: AppBarTheme(
-          color: Color(0xFF8B4513),
-          iconTheme: IconThemeData(color: Color(0xFFFFFFFF)),
-          titleTextStyle: TextStyle(color: Color(0xFFFFFFFF), fontSize: 20),
-        ),
-        textTheme: TextTheme(
-          bodyLarge: TextStyle(color: Color(0xFFFFFFFF)),
-          bodyMedium: TextStyle(color: Color(0xFFFFFFFF)),
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Color(0xFF8B4513),
-            foregroundColor: Color(0xFFFFFFFF),
+          darkTheme: ThemeData(
+            brightness: Brightness.dark,
+            scaffoldBackgroundColor: Color(0xFF000000),
+            appBarTheme: AppBarTheme(
+              color: Color(0xFF8B4513),
+              iconTheme: IconThemeData(color: Color(0xFFFFFFFF)),
+              titleTextStyle: TextStyle(color: Color(0xFFFFFFFF), fontSize: 20),
+            ),
+            textTheme: TextTheme(
+              bodyLarge: TextStyle(color: Color(0xFFFFFFFF)),
+              bodyMedium: TextStyle(color: Color(0xFFFFFFFF)),
+            ),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Color(0xFF8B4513),
+                foregroundColor: Color(0xFFFFFFFF),
+              ),
+            ),
           ),
-        ),
-      ),
-      themeMode: ThemeMode.system,
-      home: TempConversionHomePage(),
+          themeMode: currentMode,
+          home: TempConversionHomePage(notifier: _notifier),
+        );
+      },
     );
   }
 }
 
 class TempConversionHomePage extends StatefulWidget {
+  final ValueNotifier<ThemeMode> notifier;
+
+  TempConversionHomePage({required this.notifier});
+
   @override
   _TempConversionHomePageState createState() => _TempConversionHomePageState();
 }
@@ -95,6 +106,15 @@ class _TempConversionHomePageState extends State<TempConversionHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Temperature Conversion'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.brightness_6),
+            onPressed: () {
+              widget.notifier.value =
+                  widget.notifier.value == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
