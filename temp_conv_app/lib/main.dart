@@ -11,7 +11,44 @@ class TempConversionApp extends StatelessWidget {
       title: 'Temperature Conversion',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        brightness: Brightness.light,
+        scaffoldBackgroundColor: Color(0xFFD3D3D3),
+        appBarTheme: AppBarTheme(
+          color: Color(0xFFADD8E6),
+          iconTheme: IconThemeData(color: Color(0xFF000000)),
+          titleTextStyle: TextStyle(color: Color(0xFF000000), fontSize: 20),
+        ),
+        textTheme: TextTheme(
+          bodyLarge: TextStyle(color: Color(0xFF000000)),
+          bodyMedium: TextStyle(color: Color(0xFF000000)),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFFADD8E6),
+            foregroundColor: Color(0xFF000000),
+          ),
+        ),
       ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        scaffoldBackgroundColor: Color(0xFF000000),
+        appBarTheme: AppBarTheme(
+          color: Color(0xFF8B4513),
+          iconTheme: IconThemeData(color: Color(0xFFFFFFFF)),
+          titleTextStyle: TextStyle(color: Color(0xFFFFFFFF), fontSize: 20),
+        ),
+        textTheme: TextTheme(
+          bodyLarge: TextStyle(color: Color(0xFFFFFFFF)),
+          bodyMedium: TextStyle(color: Color(0xFFFFFFFF)),
+        ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Color(0xFF8B4513),
+            foregroundColor: Color(0xFFFFFFFF),
+          ),
+        ),
+      ),
+      themeMode: ThemeMode.system,
       home: TempConversionHomePage(),
     );
   }
