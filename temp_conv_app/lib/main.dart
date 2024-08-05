@@ -17,39 +17,39 @@ class TempConversionApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
             brightness: Brightness.light,
-            scaffoldBackgroundColor: Color(0xFFD3D3D3),
-            appBarTheme: AppBarTheme(
+            scaffoldBackgroundColor: const Color(0xFFD3D3D3),
+            appBarTheme: const AppBarTheme(
               color: Color(0xFFADD8E6),
               iconTheme: IconThemeData(color: Color(0xFF000000)),
               titleTextStyle: TextStyle(color: Color(0xFF000000), fontSize: 20),
             ),
-            textTheme: TextTheme(
+            textTheme: const TextTheme(
               bodyLarge: TextStyle(color: Color(0xFF000000)),
               bodyMedium: TextStyle(color: Color(0xFF000000)),
             ),
             elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFFADD8E6),
-                foregroundColor: Color(0xFF000000),
+                backgroundColor: const Color(0xFFADD8E6),
+                foregroundColor: const Color(0xFF000000),
               ),
             ),
           ),
           darkTheme: ThemeData(
             brightness: Brightness.dark,
-            scaffoldBackgroundColor: Color(0xFF000000),
-            appBarTheme: AppBarTheme(
+            scaffoldBackgroundColor: const Color(0xFF000000),
+            appBarTheme: const AppBarTheme(
               color: Color(0xFF8B4513),
               iconTheme: IconThemeData(color: Color(0xFFFFFFFF)),
               titleTextStyle: TextStyle(color: Color(0xFFFFFFFF), fontSize: 20),
             ),
-            textTheme: TextTheme(
+            textTheme: const TextTheme(
               bodyLarge: TextStyle(color: Color(0xFFFFFFFF)),
               bodyMedium: TextStyle(color: Color(0xFFFFFFFF)),
             ),
             elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF8B4513),
-                foregroundColor: Color(0xFFFFFFFF),
+                backgroundColor: const Color(0xFF8B4513),
+                foregroundColor: const Color(0xFFFFFFFF),
               ),
             ),
           ),
@@ -64,7 +64,7 @@ class TempConversionApp extends StatelessWidget {
 class TempConversionHomePage extends StatefulWidget {
   final ValueNotifier<ThemeMode> notifier;
 
-  TempConversionHomePage({required this.notifier});
+  const TempConversionHomePage({required this.notifier});
 
   @override
   _TempConversionHomePageState createState() => _TempConversionHomePageState();
@@ -80,7 +80,7 @@ class _TempConversionHomePageState extends State<TempConversionHomePage> {
     final double? temperature = double.tryParse(_temperatureController.text);
     if (temperature == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please enter a valid temperature')),
+        const SnackBar(content: Text('Please enter a valid temperature')),
       );
       return;
     }
@@ -105,10 +105,10 @@ class _TempConversionHomePageState extends State<TempConversionHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Temperature Conversion'),
+        title: const Text('Temperature Conversion'),
         actions: [
           IconButton(
-            icon: Icon(Icons.brightness_6),
+            icon: const Icon(Icons.brightness_6),
             onPressed: () {
               widget.notifier.value =
                   widget.notifier.value == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
@@ -123,21 +123,23 @@ class _TempConversionHomePageState extends State<TempConversionHomePage> {
           children: [
             TextField(
               controller: _temperatureController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: 'Enter Temperature',
                 border: OutlineInputBorder(),
               ),
               keyboardType: TextInputType.number,
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             DropdownButton<String>(
               value: _conversionType,
               onChanged: (String? newValue) {
-                setState(() {
-                  _conversionType = newValue!;
-                });
+                if (newValue != null && newValue != _conversionType) {
+                  setState(() {
+                    _conversionType = newValue;
+                  });
+                }
               },
-              items: [
+              items: const [
                 DropdownMenuItem(
                   value: 'f-to-c',
                   child: Text('Fahrenheit to Celsius'),
@@ -148,18 +150,18 @@ class _TempConversionHomePageState extends State<TempConversionHomePage> {
                 ),
               ],
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: _convertTemperature,
-              child: Text('Convert'),
+              child: const Text('Convert'),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
               'Converted Temperature: $_result',
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
-            SizedBox(height: 16),
-            Text(
+            const SizedBox(height: 16),
+            const Text(
               'Conversion History',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),

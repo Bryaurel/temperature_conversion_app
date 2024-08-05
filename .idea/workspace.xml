@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f72907d6-5dbc-402f-ab5f-9b3164f5d85b" name="Changes" comment="" />
+    <list default="true" id="f72907d6-5dbc-402f-ab5f-9b3164f5d85b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp_conv_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/temp_conv_app/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/temp_conv_app/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/temp_conv_app/test/widget_test.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,9 +21,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 1
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2k7Er0de6LniA0znyZ1giCUQkgd" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -26,17 +31,18 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Dart Command Line App.main.dart.executor": "Debug",
+    "Dart Command Line App.main.dart.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "ScreenRecorder.SavePath": "C:\\Users\\bryau",
     "ScreenshotViewer.SavePath": "C:/Users/bryau/Downloads",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/bryau/Downloads",
+    "last_opened_file_path": "C:/Users/bryau",
     "settings.editor.selected.configurable": "advanced.settings"
   }
 }]]></component>
